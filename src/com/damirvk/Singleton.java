@@ -6,12 +6,13 @@ public class Singleton {
 	
 	private String tekst;
 	private static Singleton instance;
+	private static Object lockObj = new Object();
 	
 	public static Singleton getInstance(){
 		
 		if (instance==null) {
-			
-			instance = new Singleton();
+		synchronized(lockObj){	
+			instance = new Singleton();}
 		}
 		
 		return instance;
